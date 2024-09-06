@@ -4,19 +4,20 @@
 
  Solver::Solver(ifstream &fin):DB(fin){
     int m = 3; 
-    graphColorUtil(m, 0);
+    Coloring(m, 0);
    
 }
 
-bool Solver::graphColorUtil(int m, int r) {
+bool Solver::Coloring(int m, int r) {
         if (r == v) 
             return true;
         for (int c = 1; c <= m; c++) 
             if (cheking(r, c)) {
                 colour[r] = c; // Присваиваем цвет
-                if (graphColorUtil(m, r + 1)) // Пытаемся раскрасить последующие вершины
+                if (Coloring(m, r + 1)) // Пытаемся раскрасить последующие вершины
                     return true;
-                colour[r] = 0; // Откат
+                colour[r] = 0; // пробуем другой узел
+        
             }
         return false;
 }
