@@ -24,8 +24,9 @@ bool Solver::Coloring(int m, int r) {
 
 bool Solver::cheking(int r, int c) {
     for (int i = 0; i < graph[r].size(); i++)
-        if (graph[r][i] == 1 && colour[i] == c) // Проверяем только соседей
-            return false;
+        if (graph[r][i] == 1)// Проверяем только соседей
+          if (colour[i] == c) 
+              return false;
     return true;
 }
     
